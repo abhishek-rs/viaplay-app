@@ -12,17 +12,6 @@ const getMovieBlocksFromApi = async () => {
   return {};
 };
 
-const getMovieFromApi = async (url) => {
-  try {
-    let fetchURL = url;
-    const response = await fetch(fetchURL);
-    return response.json()._embedded.viaplay.product;
-  } catch (error) {
-    console.error(error);
-  }
-  return {};
-};
-
 export default class MoviesComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +34,7 @@ export default class MoviesComponent extends React.Component {
 
   render() {
     const { movies } = this.state;
-    let blocks, res = [];
+    let blocks = [];
 
     blocks = movies ?
                       movies.reduce((res, m) => {
