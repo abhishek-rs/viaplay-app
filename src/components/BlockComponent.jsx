@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MoviePosterComponent from './MoviePosterComponent';
+import '../styles/BlockComponent.css';
 
 const getBlockFromApi = async (url) => {
   try {

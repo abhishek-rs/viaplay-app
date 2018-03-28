@@ -60,7 +60,6 @@ export default class MoviesComponent extends React.Component {
                     : []; 
     return (
       <div className="main-container">
-        <h2>Blocks displaying</h2>
         <div className="blocks-container">
           {blocks}
         </div>

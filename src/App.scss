@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body{
+  background-color: #ddd;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
 .App-logo {
 /*  animation: App-logo-spin infinite 20s linear; */
   height: 80px;
@@ -9,7 +14,6 @@
 }
 
 .App-header {
-  background-color: #ccc;
   padding: 20px;
   color: white;
 }

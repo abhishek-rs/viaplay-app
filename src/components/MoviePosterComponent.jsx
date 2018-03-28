@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/MoviePosterComponent.css';
 
 const MoviePosterComponent = ({ movie }) => (
   <div className="movie-poster">
     <img src={movie.content.images.boxart.url}/>
-    <p>{movie.content.title}</p>
+    <h4>{movie.content.title}</h4>
+    <p>{movie.content.synopsis}</p>
   </div>
 );
 
