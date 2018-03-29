@@ -19,7 +19,7 @@ export default class BlockComponent extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      carousel: true
+      carousel: false
     };
   }
 
