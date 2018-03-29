@@ -1,13 +1,30 @@
-.blocks-container { 
-    display: inline-grid; 
-}
+@import "./switch.min.css"; 
 
-.block-container{
-    display: block;
+.blocks-container{
+    display: flex;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h2{
+        margin-top: 20px;
+    }
 }
 
 .blocks-carousel{
     width: 100%;
+    margin: 20px;
+    align-self: center;
+    max-width: 1500px;
     position: relative;
-    height: 90vh;
+}
+
+.carousel-switch{
+    align-self: center;
+    width: 10%;
+    padding: 15px;
+    p{
+        margin: 5px;
+    }
 }

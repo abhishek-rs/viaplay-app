@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Slider from 'react-slick';
+import Switch from 'react-toggle-switch'
 import MoviePosterComponent from './MoviePosterComponent';
+import MovieCarouselBlock from './MovieCarouselBlock';
 import '../styles/BlockComponent.css';
 
 const getBlockFromApi = async (url) => {
@@ -21,6 +22,20 @@ export default class BlockComponent extends React.Component{
       carousel: true
     };
   }
+
+  handleChange(checked) {
+    checked ? 
+    this.setState({ carousel: true })
+    : this.setState({ carousel : false });
+  }
+
+  toggleSwitch = () => {
+    this.setState(prevState => {
+      return {
+        carousel: !prevState.carousel
+      };
+    });
+  };
   
   async componentWillMount() {
     const moviesInTheBlock = await getBlockFromApi(this.props.block._links.self.href);
@@ -32,14 +47,8 @@ export default class BlockComponent extends React.Component{
   
   render(){
     const { block } = this.state;
-    var settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    };
-    let blockMovies = block ?
+    
+    let movieGrid = block ?
                       block.reduce((res, m) => {
                         res.push(
                           <MoviePosterComponent
@@ -50,30 +59,22 @@ export default class BlockComponent extends React.Component{
                         return res;
                       }, [])
                     : []; 
-    let posters = block ?
-    block.reduce((res, m) => {
-      res.push(
-        <img
-          src={m.content.images.boxart.url}
-        />
-      );
-      return res;
-    }, [])
-  : [];
 
     return (
-      <div className="block-container">
+      <div className="blocks-container">
+    
         <h2>{this.props.block.title}</h2>
-
-        {this.state.carousel ?
-        <div className="blocks-carousel">
-           <Slider {...settings}>
-            {posters}
-           </Slider>
+        <div className="carousel-switch">
+          <p>Carousel mode</p>
+          <Switch
+            onClick={this.toggleSwitch} on={this.state.carousel}
+          />
         </div>
+        {this.state.carousel ?
+          <MovieCarouselBlock block={block} />
         :
-        <div className="blocks-container">
-          {blockMovies}
+        <div className="grid-container">
+          {movieGrid}
         </div>
         }
       </div>
